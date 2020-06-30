@@ -1,0 +1,16 @@
+{
+    "require": {
+        "klein/klein": "^2.1",
+        "firebase/php-jwt": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        },
+        "classmap": [
+            "App/Controller",
+            "App/Middleware",
+            "App/Model"
+        ]
+    }
+}
