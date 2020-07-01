@@ -37,9 +37,12 @@ class ComposerStaticInite233aa43fc4698da9ccca0de0baa7724
     );
 
     public static $classMap = array (
+        'App\\Controller' => __DIR__ . '/../..' . '/App/Controller/Controller.php',
         'App\\JwtMiddleware' => __DIR__ . '/../..' . '/App/Middleware/JwtMiddleware.php',
         'App\\Model' => __DIR__ . '/../..' . '/App/Model/Model.php',
+        'App\\RequestMiddleware' => __DIR__ . '/../..' . '/App/Middleware/RequestMiddleware.php',
         'App\\UserController' => __DIR__ . '/../..' . '/App/Controller/UserController.php',
+        'App\\UserModel' => __DIR__ . '/../..' . '/App/Model/UserModel.php',
         'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',
         'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
         'Firebase\\JWT\\JWK' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWK.php',

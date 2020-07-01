@@ -6,9 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller' => $baseDir . '/App/Controller/Controller.php',
     'App\\JwtMiddleware' => $baseDir . '/App/Middleware/JwtMiddleware.php',
     'App\\Model' => $baseDir . '/App/Model/Model.php',
+    'App\\RequestMiddleware' => $baseDir . '/App/Middleware/RequestMiddleware.php',
     'App\\UserController' => $baseDir . '/App/Controller/UserController.php',
+    'App\\UserModel' => $baseDir . '/App/Model/UserModel.php',
     'Firebase\\JWT\\BeforeValidException' => $vendorDir . '/firebase/php-jwt/src/BeforeValidException.php',
     'Firebase\\JWT\\ExpiredException' => $vendorDir . '/firebase/php-jwt/src/ExpiredException.php',
     'Firebase\\JWT\\JWK' => $vendorDir . '/firebase/php-jwt/src/JWK.php',

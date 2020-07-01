@@ -1,25 +1,28 @@
 <?php
     namespace App;
 
-    class Model {
-        protected $dbHost = 'localhost';
-        protected $dbName = 'php_mini_rest_api';
-        protected $dbUser = 'root';
-        protected $dbPass = '';
-        protected $dbConn;
-        protected $stmt;
+    use PDO;
+    use Exception;
 
-        protected function _construct()
+    class Model {
+        protected static $dbHost = '127.0.0.1';
+        protected static $dbName = 'php_mini_rest_api';
+        protected static $dbUser = 'root';
+        protected static $dbPass = '';
+        protected static $dbConn;
+        protected static $stmt;
+
+        public function __construct()
         {
             // Create a DSN...
-            $Dsn = "mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName;
+            $Dsn = "mysql:host=" . Self::$dbHost . ";dbname=" . Self::$dbName;
             $options = array(
                 PDO::ATTR_PERSISTENT => true,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             );
 
             try {
-                $this->dbConn = new PDO($Dsn, $dbUser, $dbPass, $options);
+                Self::$dbConn = new PDO($Dsn, Self::$dbUser, Self::$dbPass, $options);
             } catch(Exception $e) {
                 $Response = array(
                     status => 500,
@@ -30,23 +33,23 @@
             }
         }
 
-        protected function query($query)
+        protected static function query($query)
         {
-            $this->stmt = $this->dbConn->prepare($query);
+            Self::$stmt = Self::$dbConn->prepare($query);
             return true;
         }
 
-        protected function bindParams($param, $value, $type = null)
+        protected static function bindParams($param, $value, $type = null)
         {
             if ($type == null) {
                 switch(true) {
-                    case is_int:
+                    case is_int($value):
                         $type = PDO::PARAM_INT;
                     break;
-                    case is_bool:
+                    case is_bool($value):
                         $type = PDO::PARAM_BOOL;
                     break;
-                    case is_null:
+                    case is_null($value):
                         $type = PDO::PARAM_NULL;
                     break;
                     default:
@@ -55,26 +58,31 @@
                 }
             }
 
-            $this->stmt->bindValue($param, $value, $type);
+            Self::$stmt->bindValue($param, $value, $type);
             return;
         }
 
-        protected function execute()
+        protected static function execute()
         {
-            $this->stmt->execute();
+            Self::$stmt->execute();
             return true;
         }
 
-        protected function fetch()
+        protected static function fetch()
         {
-            $this->execute();
-            return $this->stmt->fetch(PDO::FETCH_ASSOC);
+            Self::execute();
+            return Self::$stmt->fetch(PDO::FETCH_ASSOC);
         }
 
-        protected function fetchAll()
+        protected static function fetchAll()
         {
-            $this->execute();
-            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            Self::execute();
+            return Self::$stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        protected static function lastInsertedId()
+        {
+            return Self::$dbConn->lastInsertId();
         }
     }
 ?>
