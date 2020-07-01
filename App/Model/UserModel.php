@@ -4,14 +4,6 @@
 
     class UserModel extends Model {
 
-        public static function index()
-        {
-            return array(
-                'status' => true,
-                'author' => 'Ilori Stephen A'
-            );
-        }
-
         public static function createUser($payload)
         {   
             $Sql = "INSERT INTO `db_users` (firstName, lastName, email, password, created_at, updated_at) VALUES (:firstName, :lastName, :email, :password, :created_at, :updated_at)";

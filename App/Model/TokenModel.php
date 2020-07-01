@@ -5,12 +5,11 @@
     class TokenModel extends Model {
         public function createToken($payload)
         {
-            $Sql = "INSERT INTO db_token (user_id, jwt_token, jwt_secret) VALUES (:user_id, :jwt_token, :jwt_secret)";
+            $Sql = "INSERT INTO db_token (user_id, jwt_token) VALUES (:user_id, :jwt_token)";
             Parent::query($Sql);
             // Bind Params...
             Parent::bindParams('user_id', $payload['user_id']);
             Parent::bindParams('jwt_token', $payload['jwt_token']);
-            Parent::bindParams('jwt_secret', $payload['jwt_secret']);
 
             $Token = Parent::execute();
             if ($Token) {
@@ -28,7 +27,7 @@
 
         public function fetchToken($token)
         {
-            $Sql = "SELECT db_token.user_id, db_token.jwt_token, db_token.jwt_secret, db_user.firstName, db_user.lastName, db_user.email INNER JOIN db_token.jwt_token = :jwt_token";
+            $Sql = "SELECT * FROM db_token WHERE jwt_token = :jwt_token";
             Parent::query($Sql);
             Parent::bindParams('jwt_token', $payload['jwt_token']);
 

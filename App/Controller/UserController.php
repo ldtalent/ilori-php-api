@@ -3,8 +3,10 @@
 
     use Exception;
     use App\UserModel;
+    use App\TokenModel;
     use App\Controller;
-    use App\RequestMiddleware;
+    use Firebase\JWT\JWT;
+    use App\RequestMiddleware;    
 
     class UserController extends Controller {
 
@@ -82,6 +84,26 @@
                 $UserData = $UserModel::createUser($payload);
                 if ($UserData['status']) {
                     
+                    // Initialize JWT Token....
+                    $tokenExp = date('Y-m-d H:i:s');  
+                    $tokenSecret = Parent::JWTSecret();
+                    $tokenPayload = array(
+                        'iat' => time(),
+                        'iss' => 'PHP_MINI_REST_API', //!!Modify:: Modify this to come from a constant
+                        "exp" => strtotime($tokenExp + ' 7 Days'),
+                        "user_id" => $UserData['data']['user_id']
+                    );
+                    $Jwt = JWT::encode($tokenPayload, $tokenSecret);
+
+                    // Save JWT Token...
+                    $TokenModel = new TokenModel();
+                    $TokenModel::createToken([
+                        'user_id' => $UserData['data']['user_id'],
+                        'jwt_token'=> $Jwt
+                    ]);
+                    $UserData['data']['token'] = $Jwt;
+                    
+                    // Return Response............
                     $Response['status'] = 201;
                     $Response['message'] = '';
                     $Response['data'] = $UserData;

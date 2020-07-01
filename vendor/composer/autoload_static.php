@@ -41,6 +41,7 @@ class ComposerStaticInite233aa43fc4698da9ccca0de0baa7724
         'App\\JwtMiddleware' => __DIR__ . '/../..' . '/App/Middleware/JwtMiddleware.php',
         'App\\Model' => __DIR__ . '/../..' . '/App/Model/Model.php',
         'App\\RequestMiddleware' => __DIR__ . '/../..' . '/App/Middleware/RequestMiddleware.php',
+        'App\\TokenModel' => __DIR__ . '/../..' . '/App/Model/TokenModel.php',
         'App\\UserController' => __DIR__ . '/../..' . '/App/Controller/UserController.php',
         'App\\UserModel' => __DIR__ . '/../..' . '/App/Model/UserModel.php',
         'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',

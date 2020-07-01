@@ -10,6 +10,7 @@ return array(
     'App\\JwtMiddleware' => $baseDir . '/App/Middleware/JwtMiddleware.php',
     'App\\Model' => $baseDir . '/App/Model/Model.php',
     'App\\RequestMiddleware' => $baseDir . '/App/Middleware/RequestMiddleware.php',
+    'App\\TokenModel' => $baseDir . '/App/Model/TokenModel.php',
     'App\\UserController' => $baseDir . '/App/Controller/UserController.php',
     'App\\UserModel' => $baseDir . '/App/Model/UserModel.php',
     'Firebase\\JWT\\BeforeValidException' => $vendorDir . '/firebase/php-jwt/src/BeforeValidException.php',
