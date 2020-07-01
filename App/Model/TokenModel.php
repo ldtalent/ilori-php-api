@@ -27,9 +27,9 @@
 
         public function fetchToken($token)
         {
-            $Sql = "SELECT * FROM db_token WHERE jwt_token = :jwt_token";
+            $Sql = "SELECT * FROM `db_token` WHERE jwt_token = :jwt_token";
             Parent::query($Sql);
-            Parent::bindParams('jwt_token', $payload['jwt_token']);
+            Parent::bindParams('jwt_token', $token);
 
             $Data = Parent::fetch();
             if (!empty($Data)) {

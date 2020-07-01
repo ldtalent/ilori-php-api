@@ -34,9 +34,9 @@
             return $Response;
         }
 
-        public static function fetchUserId($Id)
+        public static function fetchUserById($Id)
         {
-            $Sql = "SELECT id, firstName, lastName, email, created_at, updated_at FROM `db_user` WHERE id = :id";
+            $Sql = "SELECT id, firstName, lastName, email, created_at, updated_at FROM `db_users` WHERE id = :id";
             Parent::query($Sql);
             // Bind Params...
             Parent::bindParams('id', $Id);

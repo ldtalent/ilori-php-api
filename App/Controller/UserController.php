@@ -10,7 +10,7 @@
 
     class UserController extends Controller {
 
-        public static function createNewUser($request, $response, $service)
+        public static function createNewUser($request, $response)
         {
             $Response = [];
             $sapi_type = php_sapi_name();     
@@ -90,7 +90,7 @@
                     $tokenPayload = array(
                         'iat' => time(),
                         'iss' => 'PHP_MINI_REST_API', //!!Modify:: Modify this to come from a constant
-                        "exp" => strtotime($tokenExp + ' 7 Days'),
+                        "exp" => strtotime('+ 7 Days'),
                         "user_id" => $UserData['data']['user_id']
                     );
                     $Jwt = JWT::encode($tokenPayload, $tokenSecret);

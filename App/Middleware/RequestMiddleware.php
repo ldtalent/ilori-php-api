@@ -4,7 +4,7 @@
         protected static $Request;
         public function __construct($paths = [])
         {
-          Self::$Request = $_SERVER['CONTENT_TYPE'];
+          Self::$Request = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
           return;
         }
 
