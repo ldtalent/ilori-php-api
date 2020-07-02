@@ -11,6 +11,8 @@ return array(
     'App\\Controller' => $baseDir . '/App/Controller/Controller.php',
     'App\\JwtMiddleware' => $baseDir . '/App/Middleware/JwtMiddleware.php',
     'App\\Model' => $baseDir . '/App/Model/Model.php',
+    'App\\ProductController' => $baseDir . '/App/Controller/ProductController.php',
+    'App\\ProductModel' => $baseDir . '/App/Model/ProductModel.php',
     'App\\RequestMiddleware' => $baseDir . '/App/Middleware/RequestMiddleware.php',
     'App\\TokenModel' => $baseDir . '/App/Model/TokenModel.php',
     'App\\UserController' => $baseDir . '/App/Controller/UserController.php',

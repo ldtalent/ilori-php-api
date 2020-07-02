@@ -1,6 +1,8 @@
 <?php 
     namespace App;
     use App\UserModel;
+    use App\CatalogModel;
+    use App\ProductModel;
     class Controller {
         protected static function validation($payloads)
         {   
@@ -85,7 +87,63 @@
                                 'message' => "Sorry {$payload->key} already exists. Please try with a different Email."
                             ]);
                         }
-                    } catch (Exception $e) {  }
+                    } catch (Exception $e) { /** */ }
+                }
+
+                if ($payload->validator == 'catalogExists') {
+                    try {
+                        $CatalogModel = new CatalogModel();
+                        $checkCatalog = $CatalogModel::fetchCatalogByID($payload->data);
+                        
+                        if (!$checkCatalog['status']) {
+                            array_push($response, [
+                                'key' => $payload->key,
+                                'message' => "Sorry, The catalog with this ID could not be found in our database."
+                            ]);
+                        }
+                    } catch (Exception $e) { /** */ }
+                }
+
+                if ($payload->validator == 'productExists') {
+                    try {
+                        $ProductModel = new ProductModel();
+                        $checkProduct = $ProductModel::findProductById((int) $payload->data);
+                        
+                        if (!$checkProduct['status']) {
+                            array_push($response, [
+                                'key' => $payload->key,
+                                'message' => "Sorry, The product with this ID could not be found in our database."
+                            ]);
+                        }
+                    } catch (Exception $e) { /** */ }
+                }
+
+                if ($payload->validator == 'img') {
+                    try {
+                        $files = $payload->data;
+                        if ($files) {
+                            $fileName = $files['name'];
+                            
+                            $targetDir = '../../public/img/';
+                            $targetFile = $targetDir . basename($files['name']);
+                            
+                            $fileSize = $files['size'];
+                            $fileExtension = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                            if  (!in_array($fileExtension, $payload->acceptedExtension)) {
+                                array_push($response, [
+                                    'key' => $payload->key,
+                                    'message' => "Sorry, {$payload->key} only accepts the following extensions; " . implode(", ", $payload->acceptedExtension)
+                                ]);
+                            }
+
+                            if ($fileSize > $payload->maxSize) {
+                                array_push($response, [
+                                    'key' => $payload->key,
+                                    'message' => "Sorry, {$payload->key} File size should be less than " . $payload->maxSize
+                                ]);
+                            }
+                        }
+                    } catch (Exception $e) { /** */ }
                 }
 
             }

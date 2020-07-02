@@ -8,7 +8,6 @@
     use App\RequestMiddleware;
 
     class  CatalogController extends Controller {
-        
         public function createNewCategory($request, $response)
         {   
             $Response = [];
@@ -30,11 +29,12 @@
             $JwtMiddleware = new JwtMiddleware();
             $jwtMiddleware = $JwtMiddleware::getAndDecodeToken();
             if (isset($jwtMiddleware) && $jwtMiddleware == false) {
-                return array(
+                $response->code(400)->json([
                     'status' => 401,
                     'message' => 'Sorry, the authenticity of this token could not be verified.',
                     'data' => []
-                );
+                ]);
+                return;
             }
 
             $Data = json_decode($request->body(), true);
@@ -102,11 +102,12 @@
             $JwtMiddleware = new JwtMiddleware();
             $jwtMiddleware = $JwtMiddleware::getAndDecodeToken();
             if (isset($jwtMiddleware) && $jwtMiddleware == false) {
-                return array(
+                $response->code(400)->json(array(
                     'status' => 401,
                     'message' => 'Sorry, the authenticity of this token could not be verified.',
                     'data' => []
-                );
+                ));
+                return;
             }
 
             $Data = json_decode($request->body(), true);

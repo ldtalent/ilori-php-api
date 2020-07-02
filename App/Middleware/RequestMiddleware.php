@@ -19,6 +19,7 @@
 
         public static function acceptsFormData()
         {
+          Self::$Request = explode(';', Self::$Request)[0];
           if (strtolower(Self::$Request) == 'multipart/form-data') {
             return true;
           }

@@ -42,6 +42,8 @@ class ComposerStaticInite233aa43fc4698da9ccca0de0baa7724
         'App\\Controller' => __DIR__ . '/../..' . '/App/Controller/Controller.php',
         'App\\JwtMiddleware' => __DIR__ . '/../..' . '/App/Middleware/JwtMiddleware.php',
         'App\\Model' => __DIR__ . '/../..' . '/App/Model/Model.php',
+        'App\\ProductController' => __DIR__ . '/../..' . '/App/Controller/ProductController.php',
+        'App\\ProductModel' => __DIR__ . '/../..' . '/App/Model/ProductModel.php',
         'App\\RequestMiddleware' => __DIR__ . '/../..' . '/App/Middleware/RequestMiddleware.php',
         'App\\TokenModel' => __DIR__ . '/../..' . '/App/Model/TokenModel.php',
         'App\\UserController' => __DIR__ . '/../..' . '/App/Controller/UserController.php',
