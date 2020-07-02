@@ -334,6 +334,70 @@
             
             return;
         }
+
+        public function deleteCatalog($request, $response)
+        {
+            $Response = [];
+            $JwtMiddleware = new JwtMiddleware();
+            $jwtMiddleware = $JwtMiddleware::getAndDecodeToken();
+            if (isset($jwtMiddleware) && $jwtMiddleware == false) {                 
+                $response->code(401)->json([
+                    'status' => 401,
+                    'message' => 'Sorry, the authenticity of this token could not be verified.',
+                    'data' => []
+                ]);  
+                return;
+            }
+
+            $validationObject = array(
+                (Object) [
+                    'validator' => 'required',
+                    'data' => isset($request->id) ? $request->id : '',
+                    'key' => 'Catalog Name'
+                ],
+                (Object) [
+                    'validator' => 'numeric',
+                    'data' => isset($request->id) ? $request->id : '',
+                    'key' => 'Catalog ID'
+                ]
+            );
+            
+            $validationBag = Parent::validation($validationObject);                    
+            if ($validationBag->status) {              
+                $response->code(400)->json($validationBag);  
+                return;
+            }
+
+            try {
+                $CatalogModel = new CatalogModel();
+                $catalog = $CatalogModel::deleteCatalog($request->id);
+                
+                if ($catalog['status']) {
+
+                    $Response['status'] = true;
+                    $Response['data'] = [];
+                    $Response['message'] = '';
+
+                    $response->code(200)->json($Response);
+                    return;
+                }
+                
+                $Response['status'] = 500;
+                $Response['message'] = 'Sorry, An unexpected error occured and your catalog could be deleted.';
+                $Response['data'] = [];
+                
+                $response->code(500)->json($Response);
+                return;
+            } catch (Exception $e) {
+
+                $Response['status'] = 500;
+                $Response['message'] = $e->getMessage();
+                $Response['data'] = [];
+                
+                $response->code(500)->json($Response);
+                return;
+            }
+        }
     }
 
 ?>

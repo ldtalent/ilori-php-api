@@ -110,6 +110,25 @@
                 'data' => $catalogs
             );
         }
+
+        public static function deleteCatalog($Id)
+        {
+            $Sql = "DELETE FROM `db_catalogs` WHERE id = :id";
+            Parent::query($Sql);
+            Parent::bindParams('id', $Id);
+            $product = Parent::execute();
+            if (!empty($product)) {
+                return array(
+                    'status' => true,
+                    'data' => []
+                );
+            }
+
+            return array(
+                'status' => false,
+                'data' => []
+            );
+        }
     }
 
 ?>

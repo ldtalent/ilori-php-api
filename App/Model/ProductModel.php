@@ -99,5 +99,24 @@
                 'data' => []
             );
         }
+
+        public static function deleteProduct($Id)
+        {
+            $Sql = "DELETE FROM `db_products` WHERE id = :id";
+            Parent::query($Sql);
+            Parent::bindParams('id', $Id);
+            $product = Parent::execute();
+            if (!empty($product)) {
+                return array(
+                    'status' => true,
+                    'data' => []
+                );
+            }
+
+            return array(
+                'status' => false,
+                'data' => []
+            );
+        }
     }
 ?>

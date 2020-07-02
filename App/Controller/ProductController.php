@@ -428,7 +428,67 @@
         
         public function deleteProduct($request, $response)
         {
+            $Response = [];
+            // Call the Middleware
+            $ProductModel = new ProductModel();
 
+            $JwtMiddleware = new JwtMiddleware();
+            $jwtMiddleware = $JwtMiddleware::getAndDecodeToken();
+            if (isset($jwtMiddleware) && $jwtMiddleware == false) {
+                $response->code(400)->json([
+                    'status' => 401,
+                    'message' => 'Sorry, the authenticity of this token could not be verified.',
+                    'data' => []
+                ]);
+                return;
+            }
+
+            $validationObject = array(
+                (Object) [
+                    'validator' => 'required',
+                    'data' => isset($request->id) ? $request->id : '',
+                    'key' => 'Product ID'
+                ],
+                (Object) [
+                    'validator' => 'productExists',
+                    'data' => isset($request->id) ? $request->id : '',
+                    'key' => 'Product Id'
+                ],
+            );
+
+            $validationBag = Parent::validation($validationObject);                    
+            if ($validationBag->status) {              
+                $response->code(400)->json($validationBag);  
+                return;
+            }
+
+            try {
+                $ProductModel = new ProductModel();
+                $product = $ProductModel::deleteProduct($request->id);
+
+                if ($product['status']) {
+                    $Response['status'] = 200;
+                    $Response['data'] = [];
+                    $Response['message'] = '';
+
+                    $response->code(200)->json($Response);
+                    return;
+                }
+
+                $Response['status'] = 400;
+                $Response['data'] = [];
+                $Response['message'] = 'An unexpected error occurred and your product could not be deleted. Please, try again later.';
+                
+                $response->code(400)->json($Response);
+                return;
+            } catch (Exception $e) {
+                $Response['status'] = 500;
+                $Response['message'] = $e->getMessage();
+                $Response['data'] = [];
+                
+                $response->code(500)->json($Response);
+                return;
+            }
         }
 
     }
