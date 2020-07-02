@@ -16,6 +16,7 @@
     $Klein->respond(['GET', 'HEAD'], '/api/v1/fetch-catalog-by-id/[:id]', [ new CatalogController(), 'fetchCatalogById' ]);
     $Klein->respond(['GET', 'HEAD'], '/api/v1/fetch-catalog-by-name/[:name]', [ new CatalogController(), 'fetchCatalogByName' ]);
     $Klein->respond(['GET', 'HEAD'], '/api/v1/catalogs', [ new CatalogController(), 'fetchCatalogs' ]);
+    $Klein->respond('DELETE', '/api/v1/del-catalog/[:id]', [ new CatalogController(), 'deleteCatalog' ]);
 
     /******************** Product Routes  **********************/
     $Klein->respond('POST', '/api/v1/product', [ new ProductController(), 'createProduct' ]);
