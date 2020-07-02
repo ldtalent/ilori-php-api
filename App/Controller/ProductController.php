@@ -7,7 +7,24 @@
     use App\JwtMiddleware;
     use App\RequestMiddleware;
     use App\CatalogController;
+
+    /**
+     * ProductController - The ProductController. This Controller makes use of a few Models for creating, updating, fetching and deleting Products.
+     *
+     * @author      Ilori Stephen A <stephenilori458@gmail.com>
+     * @link        https://github.com/learningdollars/php-rest-api/App/Controller/ProductController.php
+     * @license     MIT
+     */
     class ProductController extends Controller {
+
+         /**
+         * createProduct
+         *
+         * Creates a new Product.
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+        */
         public function createProduct($request, $response)
         {
             $Response = [];
@@ -152,6 +169,14 @@
             }
         }
 
+        /**
+         * updateProduct
+         *
+         * Updates a Product.
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+        */
         public function updateProduct($request, $response)
         {
             $Response = [];
@@ -315,6 +340,14 @@
             }
         }
 
+        /**
+         * getProductById
+         *
+         * Gets a Product by it'd ID
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+        */
         public function getProductById($request, $response)
         {
             $Response = [];
@@ -380,6 +413,14 @@
             }
         }
 
+        /**
+         * fetchProducts
+         *
+         * Fetches an Array of products....
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+        */
         public function fetchProducts($request, $response)
         {
             $Response = [];
@@ -426,6 +467,14 @@
             }
         }
         
+         /**
+         * deleteProduct
+         *
+         * Deletes a Product by it'd ID
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+         */
         public function deleteProduct($request, $response)
         {
             $Response = [];

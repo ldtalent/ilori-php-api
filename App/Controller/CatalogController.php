@@ -7,9 +7,25 @@
     use App\JwtMiddleware;
     use App\RequestMiddleware;
 
-    class  CatalogController extends Controller {
-        public function createNewCategory($request, $response)
-        {   
+    /**
+     * CatalogController - The CatalogController. This Controller makes use of a few Models for creating, updating, fetchingand deleting Catalogs.
+     *
+     * @author      Ilori Stephen A <stephenilori458@gmail.com>
+     * @link        https://github.com/learningdollars/php-rest-api/App/Controller/CatalogController.php
+     * @license     MIT
+     */
+    class CatalogController extends Controller {
+
+        /**
+         * createNewCatalog
+         *
+         * Creates a new Catalog.
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+         */
+        public function createNewCatalog($request, $response)
+        {
             $Response = [];
             // Call the JSON Middleware
             $JsonMiddleware = new RequestMiddleware();
@@ -81,6 +97,14 @@
             return;
         }
 
+         /**
+         * updateCatalog
+         *
+         * Updates a Catalog.
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+         */
         public function updateCatalog($request, $response)
         {
             $Response = [];
@@ -160,6 +184,14 @@
             }
         }
 
+        /**
+         * fetchCatalogById
+         *
+         * Fetches a catalog by an ID
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+         */
         public function fetchCatalogById($request, $response)
         {
             $Response = [];
@@ -225,6 +257,14 @@
         
         }
 
+        /**
+         * fetchCatalogByName
+         *
+         * Fetches a catalog by it's name
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+         */
         public function fetchCatalogByName($request, $response)
         {
             $Response = [];
@@ -289,6 +329,14 @@
             return;
         }
 
+        /**
+         * fetchCatalogs
+         *
+         * Fetches an array of catalogs
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+         */
         public function fetchCatalogs($request, $response)
         {
             $Response = [];
@@ -335,6 +383,14 @@
             return;
         }
 
+         /**
+         * deleteCatalog
+         *
+         * Deletes a catalog by it's ID
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+         */
         public function deleteCatalog($request, $response)
         {
             $Response = [];

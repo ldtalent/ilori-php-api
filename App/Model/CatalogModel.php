@@ -1,10 +1,26 @@
-<?php
+<?php   
     namespace App;
 
     use App\Model;
+
+    /**
+     * CatalogModel - A Model for the Catalog Controller.
+     *
+     * @author      Ilori Stephen A <stephenilori458@gmail.com>
+     * @link        https://github.com/learningdollars/php-rest-api/App/Model/CatalogModel.php
+     * @license     MIT
+     */
     class CatalogModel extends Model {
-        
-        public static function createCatalog($Payload)
+
+        /**
+         * createCatalog
+         *
+         * Creates a New Catalog 
+         *
+         * @param array $Payload  Contains all the required data needed to create a Catalog.
+         * @return array Anonymos
+         */
+        public static function createCatalog(array $Payload) :array
         {
             $Sql = "INSERT INTO `db_catalogs` (name, created_at, updated_at) VALUES (:name, :created_at, :updated_at)";
             Parent::query($Sql);
@@ -29,7 +45,15 @@
             );
         }
 
-        public static function updateCatalog($Payload)
+        /**
+         * updateCatalog
+         *
+         * Updates a New Catalog 
+         *
+         * @param array $Payload  Contains all the fields that will be updated.
+         * @return array Anonymos
+         */
+        public static function updateCatalog(array $Payload) :array
         {
             $Sql = "UPDATE `db_catalogs` SET name = :name, updated_at = :updated_at WHERE id = :id";
             Parent::query($Sql);
@@ -52,7 +76,15 @@
             );
         }
 
-        public static function fetchCatalogByID($Id)
+        /**
+         * fetchCatalogByID
+         *
+         * Returns the first Catalog that matches the ID
+         *
+         * @param int $Id    The Id of the Row to be updated.
+         * @return array Anonymos
+         */
+        public static function fetchCatalogByID(Int $Id) :array
         {
             $Sql = "SELECT * FROM `db_catalogs` WHERE id = :id";
             Parent::query($Sql);
@@ -72,7 +104,15 @@
             );
         }
 
-        public static function fetchCatalogByName($name)
+        /**
+         * fetchCatalogByName
+         *
+         * Returns the first Catalog that matches the name
+         *
+         * @param string $name   The name of the row to be updated.
+         * @return array Anonymos
+         */
+        public static function fetchCatalogByName($name) :array
         {
             $Sql = "SELECT * FROM `db_catalogs` WHERE name = :name";
             Parent::query($Sql);
@@ -92,7 +132,15 @@
             );
         }
 
-        public static function fetchCatalogs()
+        /**
+         * fetchCatalogs
+         *
+         * Returns a list of catalogs.
+         *
+         * @param void
+         * @return array Anonymos
+         */
+        public static function fetchCatalogs() :array
         {
             $Sql = "SELECT * FROM `db_catalogs`";
             Parent::query($Sql);
@@ -111,7 +159,15 @@
             );
         }
 
-        public static function deleteCatalog($Id)
+        /**
+         * deleteCatalog
+         *
+         * Deletes a catalog
+         *
+         * @param int $Id       The Id of the catalog to be deleted.
+         * @return array Anonymos
+         */
+        public static function deleteCatalog($Id) :array
         {
             $Sql = "DELETE FROM `db_catalogs` WHERE id = :id";
             Parent::query($Sql);

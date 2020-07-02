@@ -2,8 +2,24 @@
     namespace App;
     use App\Model;
 
+    /**
+     * TokenModel - This Model is consumed basically by the UserController and is also consumed by other controllers and Middlewares...
+     *
+     * @author      Ilori Stephen A <stephenilori458@gmail.com>
+     * @link        https://github.com/learningdollars/php-rest-api/App/Model/TokenModel.php
+     * @license     MIT
+     */
     class TokenModel extends Model {
-        public function createToken($payload)
+
+        /**
+         * createToken
+         *
+         * creates a new Token
+         *
+         * @param array $payload  Contains all the fields that will be created.
+         * @return array Anonymos
+         */
+        public function createToken(array $payload) :array
         {
             $Sql = "INSERT INTO db_token (user_id, jwt_token) VALUES (:user_id, :jwt_token)";
             Parent::query($Sql);
@@ -25,7 +41,15 @@
             );
         }
 
-        public function fetchToken($token)
+         /**
+         * fetchToken
+         *
+         * fetches an existing Token using the $token
+         *
+         * @param string $token     The token that will be used in matching the closest token from the database.
+         * @return array Anonymos
+         */
+        public function fetchToken(String $token) :array
         {
             $Sql = "SELECT * FROM `db_token` WHERE jwt_token = :jwt_token";
             Parent::query($Sql);

@@ -8,8 +8,23 @@
     use Firebase\JWT\JWT;
     use App\RequestMiddleware;    
 
+    /**
+     * UserController - The UserController. This Controller makes use of a few Models for creating, updating, fetching and deleting Users.
+     *
+     * @author      Ilori Stephen A <stephenilori458@gmail.com>
+     * @link        https://github.com/learningdollars/php-rest-api/App/Controller/UserController.php
+     * @license     MIT
+     */
     class UserController extends Controller {
-
+        
+        /**
+         * createNewUser
+         *
+         * Creates a new User.
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+        */
         public function createNewUser($request, $response)
         {
             $Response = [];
@@ -128,6 +143,14 @@
             }
         }
 
+        /**
+         * login
+         *
+         * Authenticates a New User.
+         *
+         * @param mixed $request $response Contains the Request and Respons Object from the router.
+         * @return mixed Annonymous
+        */
         public function login($request, $response)
         {
             $Response = [];

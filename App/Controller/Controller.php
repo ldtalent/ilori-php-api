@@ -3,9 +3,26 @@
     use App\UserModel;
     use App\CatalogModel;
     use App\ProductModel;
+
+    /**
+     * Controller - The Base Controller for all other Controllers.... All Other Controllers extends this Controller.
+     *
+     * @author      Ilori Stephen A <stephenilori458@gmail.com>
+     * @link        https://github.com/learningdollars/php-rest-api/App/Controller/Controller.php
+     * @license     MIT
+     */
     class Controller {
-        protected static function validation($payloads)
-        {   
+
+        /**
+         * validation
+         *
+         * Validates an array of objects using defined rules...
+         *
+         * @param array $Payload  Contains an array of Objects that will be validated.
+         * @return array $response
+         */
+        protected static function validation(Array $payloads) :array
+        {
             $i = -1;
             $response = [];
             foreach($payloads as $payload) {
@@ -162,7 +179,15 @@
             return $validationErrors;
         }
 
-        protected static function JWTSecret()
+        /**
+         * JWTSecret
+         *
+         * Returns a JWT Secret....
+         *
+         * @param void 
+         * @return string Annonymous
+         */
+        protected static function JWTSecret() :string
         {
             return 'K-lyniEXe8Gm-WOA7IhUd5xMrqCBSPzZFpv02Q6sJcVtaYD41wfHRL3';
         }

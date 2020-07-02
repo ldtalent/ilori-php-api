@@ -2,8 +2,25 @@
     namespace App;
 
     use App\Model;
+
+    /**
+     * ProductModel - This Model is consumed basically by the ProductController and is also consumed by other controllers...
+     *
+     * @author      Ilori Stephen A <stephenilori458@gmail.com>
+     * @link        https://github.com/learningdollars/php-rest-api/App/Model/ProductModel.php
+     * @license     MIT
+     */
     class ProductModel extends Model {
-        public static function createProduct($payload)
+
+        /**
+         * createProduct
+         *
+         * creates a new product
+         *
+         * @param array $payload  Contains all the fields that will be created.
+         * @return array Anonymos
+         */
+        public static function createProduct(array $payload) :array
         {
             $Sql = "INSERT INTO db_products (name, catalog_id, price, color, size, banner, created_at, updated_at) VALUES (:name, :catalog_id, :price, :color, :size, :banner, :created_at, :updated_at)";
 
@@ -34,7 +51,15 @@
             );
         }
 
-        public static function findProductById($Id)
+        /**
+         * findProductById
+         *
+         * fetches a product by it's ID
+         *
+         * @param int $Id  The Id of the row to be returned...
+         * @return array Anonymos
+         */
+        public static function findProductById(int $Id) :array
         {
             $Sql = "SELECT * FROM `db_products` WHERE id = :id";
             Parent::query($Sql);
@@ -53,7 +78,15 @@
             );
         }
         
-        public static function fetchProducts()
+        /**
+         * fetchProducts
+         *
+         * fetches a list of products..
+         *
+         * @param void 
+         * @return array Anonymos
+         */
+        public static function fetchProducts() :array
         {
             $Sql = "SELECT * FROM `db_products`";
             Parent::query($Sql);
@@ -71,7 +104,15 @@
             );
         }
 
-        public static function updateProduct($Payload)
+        /**
+         * updateProduct
+         *
+         * update a product based on the product ID
+         *
+         * @param array  $Payload  An array of values to be updated... 
+         * @return array Anonymos
+         */
+        public static function updateProduct(array $Payload) :array
         {
             $Sql = "UPDATE `db_products` SET name = :name, catalog_id = :catalog_id, price = :price, color = :color, size = :size, price = :price, banner = :banner, updated_at = :updated_at WHERE id = :id";
             Parent::query($Sql);
@@ -100,7 +141,15 @@
             );
         }
 
-        public static function deleteProduct($Id)
+        /**
+         * deleteProduct
+         *
+         * deletes a product based on the product ID
+         *
+         * @param int $Id  An array of values to be deleted... 
+         * @return array Anonymos
+         */
+        public static function deleteProduct(int $Id) :array
         {
             $Sql = "DELETE FROM `db_products` WHERE id = :id";
             Parent::query($Sql);

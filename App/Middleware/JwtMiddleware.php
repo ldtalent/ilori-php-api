@@ -6,23 +6,54 @@
     use App\TokenModel;
     use App\UserModel;
 
+    /**
+     * JwtMiddleware - The JwtMiddleware. This Controller makes use of a few Models, Classes and packages for authenticating requests....
+     *
+     * @author      Ilori Stephen A <stephenilori458@gmail.com>
+     * @link        https://github.com/learningdollars/php-rest-api/App/Middleware/JWTMiddleware.php
+     * @license     MIT
+     */
     class JwtMiddleware {
         protected static $user;
         protected static $token;
         protected static $user_id;
 
-        private static function JWTSecret()
+        /**
+         * JWTSecret
+         *
+         * Returns a JWT Secret...
+         *
+         * @param   void 
+         * @return  string
+        */
+        private static function JWTSecret() :string
         {
             return 'K-lyniEXe8Gm-WOA7IhUd5xMrqCBSPzZFpv02Q6sJcVtaYD41wfHRL3';
         }
 
-        protected static function getToken()
+         /**
+         * getToken
+         *
+         * Fetches and return the JWT Token from the request Header
+         *
+         * @param   void 
+         * @return  string
+        */
+        protected static function getToken() :string
         {
             Self::$token = $_SERVER['HTTP_AUTHORIZATION'];
             return $_SERVER['HTTP_AUTHORIZATION'];
         }
 
-        protected static function validateToken()
+        /**
+         * validateToken
+         *
+         * Validates the JWT Token and returns a boolean true...
+         *
+         * @param   void 
+         * @return  boolean
+        */
+        protected static function validateToken() :boolean
         {
             Self::getToken();
             if (Self::$token == '' || Self::$token == null) {
@@ -41,6 +72,14 @@
             
         }
 
+        /**
+         * getAndDecodeToken
+         *
+         * Decodes and returns a boolean true or the user_id.
+         *
+         * @param   void 
+         * @return  mixed
+        */
         public function getAndDecodeToken()
         {
             $token = Self::validateToken();
@@ -70,7 +109,15 @@
             }
         }
 
-        public function getUser()
+         /**
+         * getUser
+         *
+         * Fetches the user ID from the JWT Token and returns a User Array.
+         *
+         * @param   void 
+         * @return  array
+        */
+        public function getUser() :array
         {
             try {
                 $UserModel = new UserModel();

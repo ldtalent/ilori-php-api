@@ -11,7 +11,7 @@
     $Klein->respond('POST', '/api/v1/user-auth', [ new UserController(), 'login' ]);
 
     /******************** Catalog Routes **********************/
-    $Klein->respond('POST', '/api/v1/catalog', [ new CatalogController(), 'createNewCategory' ]);
+    $Klein->respond('POST', '/api/v1/catalog', [ new CatalogController(), 'createNewCatalog' ]);
     $Klein->respond(['PATCH', 'PUT'], '/api/v1/catalog/[:id]', [ new CatalogController(),  'updateCatalog']);
     $Klein->respond(['GET', 'HEAD'], '/api/v1/fetch-catalog-by-id/[:id]', [ new CatalogController(), 'fetchCatalogById' ]);
     $Klein->respond(['GET', 'HEAD'], '/api/v1/fetch-catalog-by-name/[:name]', [ new CatalogController(), 'fetchCatalogByName' ]);
