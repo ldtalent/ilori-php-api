@@ -1,4 +1,4 @@
-<?php 
+<?php
     namespace App;
     use App\UserModel;
     use App\CatalogModel;
@@ -21,7 +21,7 @@
          * @param array $Payload  Contains an array of Objects that will be validated.
          * @return array $response
          */
-        protected static function validation(Array $payloads) :array
+        protected static function validation($payloads)
         {
             $i = -1;
             $response = [];
@@ -111,7 +111,7 @@
                     try {
                         $CatalogModel = new CatalogModel();
                         $checkCatalog = $CatalogModel::fetchCatalogByID($payload->data);
-                        
+
                         if (!$checkCatalog['status']) {
                             array_push($response, [
                                 'key' => $payload->key,
@@ -125,7 +125,7 @@
                     try {
                         $ProductModel = new ProductModel();
                         $checkProduct = $ProductModel::findProductById((int) $payload->data);
-                        
+
                         if (!$checkProduct['status']) {
                             array_push($response, [
                                 'key' => $payload->key,
@@ -140,10 +140,10 @@
                         $files = $payload->data;
                         if ($files) {
                             $fileName = $files['name'];
-                            
+
                             $targetDir = '../../public/img/';
                             $targetFile = $targetDir . basename($files['name']);
-                            
+
                             $fileSize = $files['size'];
                             $fileExtension = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
                             if  (!in_array($fileExtension, $payload->acceptedExtension)) {
@@ -184,10 +184,10 @@
          *
          * Returns a JWT Secret....
          *
-         * @param void 
+         * @param void
          * @return string Annonymous
          */
-        protected static function JWTSecret() :string
+        protected static function JWTSecret()
         {
             return 'K-lyniEXe8Gm-WOA7IhUd5xMrqCBSPzZFpv02Q6sJcVtaYD41wfHRL3';
         }

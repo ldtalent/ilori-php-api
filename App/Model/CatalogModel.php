@@ -1,4 +1,4 @@
-<?php   
+<?php
     namespace App;
 
     use App\Model;
@@ -15,12 +15,12 @@
         /**
          * createCatalog
          *
-         * Creates a New Catalog 
+         * Creates a New Catalog
          *
          * @param array $Payload  Contains all the required data needed to create a Catalog.
          * @return array Anonymos
          */
-        public static function createCatalog(array $Payload) :array
+        public static function createCatalog($Payload)
         {
             $Sql = "INSERT INTO `db_catalogs` (name, created_at, updated_at) VALUES (:name, :created_at, :updated_at)";
             Parent::query($Sql);
@@ -35,7 +35,7 @@
                 $Payload['catalog_id'] = $catalog_id;
                 return array(
                     'status' => true,
-                    'data' => $Payload,                    
+                    'data' => $Payload,
                 );
             }
 
@@ -48,12 +48,12 @@
         /**
          * updateCatalog
          *
-         * Updates a New Catalog 
+         * Updates a New Catalog
          *
          * @param array $Payload  Contains all the fields that will be updated.
          * @return array Anonymos
          */
-        public static function updateCatalog(array $Payload) :array
+        public static function updateCatalog($Payload)
         {
             $Sql = "UPDATE `db_catalogs` SET name = :name, updated_at = :updated_at WHERE id = :id";
             Parent::query($Sql);
@@ -66,7 +66,7 @@
             if ($catalog) {
                 return array(
                     'status' => true,
-                    'data' => $Payload,                    
+                    'data' => $Payload,
                 );
             }
 
@@ -84,7 +84,7 @@
          * @param int $Id    The Id of the Row to be updated.
          * @return array Anonymos
          */
-        public static function fetchCatalogByID(Int $Id) :array
+        public static function fetchCatalogByID($Id)
         {
             $Sql = "SELECT * FROM `db_catalogs` WHERE id = :id";
             Parent::query($Sql);
@@ -112,7 +112,7 @@
          * @param string $name   The name of the row to be updated.
          * @return array Anonymos
          */
-        public static function fetchCatalogByName($name) :array
+        public static function fetchCatalogByName($name)
         {
             $Sql = "SELECT * FROM `db_catalogs` WHERE name = :name";
             Parent::query($Sql);
@@ -140,7 +140,7 @@
          * @param void
          * @return array Anonymos
          */
-        public static function fetchCatalogs() :array
+        public static function fetchCatalogs()
         {
             $Sql = "SELECT * FROM `db_catalogs`";
             Parent::query($Sql);
@@ -167,7 +167,7 @@
          * @param int $Id       The Id of the catalog to be deleted.
          * @return array Anonymos
          */
-        public static function deleteCatalog($Id) :array
+        public static function deleteCatalog($Id)
         {
             $Sql = "DELETE FROM `db_catalogs` WHERE id = :id";
             Parent::query($Sql);

@@ -2,7 +2,7 @@
     namespace App;
     use Firebase\JWT\JWT;
     use Exception;
-    
+
     use App\TokenModel;
     use App\UserModel;
 
@@ -23,10 +23,10 @@
          *
          * Returns a JWT Secret...
          *
-         * @param   void 
+         * @param   void
          * @return  string
         */
-        private static function JWTSecret() :string
+        private static function JWTSecret()
         {
             return 'K-lyniEXe8Gm-WOA7IhUd5xMrqCBSPzZFpv02Q6sJcVtaYD41wfHRL3';
         }
@@ -36,10 +36,10 @@
          *
          * Fetches and return the JWT Token from the request Header
          *
-         * @param   void 
+         * @param   void
          * @return  string
         */
-        protected static function getToken() :string
+        protected static function getToken()
         {
             Self::$token = $_SERVER['HTTP_AUTHORIZATION'];
             return $_SERVER['HTTP_AUTHORIZATION'];
@@ -50,10 +50,10 @@
          *
          * Validates the JWT Token and returns a boolean true...
          *
-         * @param   void 
+         * @param   void
          * @return  boolean
         */
-        protected static function validateToken() :boolean
+        protected static function validateToken()
         {
             Self::getToken();
             if (Self::$token == '' || Self::$token == null) {
@@ -66,10 +66,10 @@
                 if (isset($Token[1]) && $Token == '') {
                     return false;
                 }
-                
+
                 return $Token[1];
             } catch (Exception $e) { return false; }
-            
+
         }
 
         /**
@@ -77,7 +77,7 @@
          *
          * Decodes and returns a boolean true or the user_id.
          *
-         * @param   void 
+         * @param   void
          * @return  mixed
         */
         public function getAndDecodeToken()
@@ -89,7 +89,7 @@
                     $TokenModel = new TokenModel();
                     // Check the database for the query before decoding it...
                     $tokenDB = $TokenModel::fetchToken($token);
- 
+
                     if ($tokenDB['status']) {
                         // decode the token and pass the result on to the controller....
                         $decodedToken = (Array) JWT::decode($token, Self::JWTSecret(), array('HS256'));
@@ -114,10 +114,10 @@
          *
          * Fetches the user ID from the JWT Token and returns a User Array.
          *
-         * @param   void 
+         * @param   void
          * @return  array
         */
-        public function getUser() :array
+        public function getUser()
         {
             try {
                 $UserModel = new UserModel();

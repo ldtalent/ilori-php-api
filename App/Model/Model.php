@@ -24,7 +24,7 @@
          *
          * Creates a New Database Connection...
          *
-         * @param void 
+         * @param void
          * @return void
          */
         public function __construct()
@@ -56,7 +56,7 @@
          * @param string $query  Sql query from extending Models
          * @return void Anonymos
          */
-        protected static function query(string $query)
+        protected static function query($query)
         {
             Self::$stmt = Self::$dbConn->prepare($query);
             return true;
@@ -70,7 +70,7 @@
          * @param mixed $param, $value, $type  The parameter to bind the value to and the data type which is by default null.
          * @return void Anonymos
          */
-        protected static function bindParams(string $param, mixed $value, $type = null)
+        protected static function bindParams($param, $value, $type = null)
         {
             if ($type == null) {
                 switch(true) {

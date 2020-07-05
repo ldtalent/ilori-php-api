@@ -19,7 +19,7 @@
          * @param array $payload  Contains all the fields that will be created.
          * @return array Anonymos
          */
-        public static function createUser(array $payload) :array
+        public static function createUser($payload)
         {
             $Sql = "INSERT INTO `db_users` (firstName, lastName, email, password, created_at, updated_at) VALUES (:firstName, :lastName, :email, :password, :created_at, :updated_at)";
             Parent::query($Sql);
@@ -57,7 +57,7 @@
          * @param int $Id  The Id of the row to be fetched...
          * @return array Anonymos
          */
-        public static function fetchUserById(int $Id) :Array
+        public static function fetchUserById($Id)
         {
             $Sql = "SELECT id, firstName, lastName, email, created_at, updated_at FROM `db_users` WHERE id = :id";
             Parent::query($Sql);
@@ -86,7 +86,7 @@
          * @param string $email  The email of the row to be fetched...
          * @return array Anonymos
          */
-        public static function checkEmail(string $email) :Array
+        public static function checkEmail($email)
         {
             $Sql = "SELECT * FROM `db_users` WHERE email = :email";
             Parent::query($Sql);

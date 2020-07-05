@@ -19,7 +19,7 @@
          * @param array $payload  Contains all the fields that will be created.
          * @return array Anonymos
          */
-        public function createToken(array $payload) :array
+        public function createToken($payload)
         {
             $Sql = "INSERT INTO db_token (user_id, jwt_token) VALUES (:user_id, :jwt_token)";
             Parent::query($Sql);
@@ -49,7 +49,7 @@
          * @param string $token     The token that will be used in matching the closest token from the database.
          * @return array Anonymos
          */
-        public function fetchToken(String $token) :array
+        public function fetchToken($token)
         {
             $Sql = "SELECT * FROM `db_token` WHERE jwt_token = :jwt_token";
             Parent::query($Sql);

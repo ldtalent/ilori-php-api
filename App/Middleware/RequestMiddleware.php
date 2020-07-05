@@ -33,7 +33,7 @@
          * @param void
          * @return boolean
          */
-        public static function acceptsJson() :boolean
+        public static function acceptsJson()
         {
           if (strtolower(Self::$Request) == 'application/json') {
             return true;

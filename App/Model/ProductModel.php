@@ -20,7 +20,7 @@
          * @param array $payload  Contains all the fields that will be created.
          * @return array Anonymos
          */
-        public static function createProduct(array $payload) :array
+        public static function createProduct($payload)
         {
             $Sql = "INSERT INTO db_products (name, catalog_id, price, color, size, banner, created_at, updated_at) VALUES (:name, :catalog_id, :price, :color, :size, :banner, :created_at, :updated_at)";
 
@@ -38,10 +38,10 @@
             if ($product) {
                 $product_id = Parent::lastInsertedId();
                 $payload['product_id'] = $product_id;
-                
+
                 return array(
                     'status' => true,
-                    'data' => $payload                    
+                    'data' => $payload
                 );
             }
 
@@ -59,7 +59,7 @@
          * @param int $Id  The Id of the row to be returned...
          * @return array Anonymos
          */
-        public static function findProductById(int $Id) :array
+        public static function findProductById($Id)
         {
             $Sql = "SELECT * FROM `db_products` WHERE id = :id";
             Parent::query($Sql);
@@ -77,16 +77,16 @@
                 'data' => []
             );
         }
-        
+
         /**
          * fetchProducts
          *
          * fetches a list of products..
          *
-         * @param void 
+         * @param void
          * @return array Anonymos
          */
-        public static function fetchProducts() :array
+        public static function fetchProducts()
         {
             $Sql = "SELECT * FROM `db_products`";
             Parent::query($Sql);
@@ -109,10 +109,10 @@
          *
          * update a product based on the product ID
          *
-         * @param array  $Payload  An array of values to be updated... 
+         * @param array  $Payload  An array of values to be updated...
          * @return array Anonymos
          */
-        public static function updateProduct(array $Payload) :array
+        public static function updateProduct($Payload)
         {
             $Sql = "UPDATE `db_products` SET name = :name, catalog_id = :catalog_id, price = :price, color = :color, size = :size, price = :price, banner = :banner, updated_at = :updated_at WHERE id = :id";
             Parent::query($Sql);
@@ -131,7 +131,7 @@
             if ($product) {
                 return array(
                     'status' => true,
-                    'data' => $Payload,                    
+                    'data' => $Payload,
                 );
             }
 
@@ -146,10 +146,10 @@
          *
          * deletes a product based on the product ID
          *
-         * @param int $Id  An array of values to be deleted... 
+         * @param int $Id  An array of values to be deleted...
          * @return array Anonymos
          */
-        public static function deleteProduct(int $Id) :array
+        public static function deleteProduct($Id)
         {
             $Sql = "DELETE FROM `db_products` WHERE id = :id";
             Parent::query($Sql);
