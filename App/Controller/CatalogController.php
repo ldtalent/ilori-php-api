@@ -22,7 +22,7 @@
          * Creates a new Catalog.
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
          */
         public function createNewCatalog($request, $response)
         {
@@ -103,7 +103,7 @@
          * Updates a Catalog.
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
          */
         public function updateCatalog($request, $response)
         {
@@ -190,7 +190,7 @@
          * Fetches a catalog by an ID
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
          */
         public function fetchCatalogById($request, $response)
         {
@@ -263,7 +263,7 @@
          * Fetches a catalog by it's name
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
          */
         public function fetchCatalogByName($request, $response)
         {
@@ -335,7 +335,7 @@
          * Fetches an array of catalogs
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
          */
         public function fetchCatalogs($request, $response)
         {
@@ -389,7 +389,7 @@
          * Deletes a catalog by it's ID
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
          */
         public function deleteCatalog($request, $response)
         {

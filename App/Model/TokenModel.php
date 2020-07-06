@@ -17,7 +17,7 @@
          * creates a new Token
          *
          * @param array $payload  Contains all the fields that will be created.
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public function createToken($payload)
         {
@@ -47,7 +47,7 @@
          * fetches an existing Token using the $token
          *
          * @param string $token     The token that will be used in matching the closest token from the database.
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public function fetchToken($token)
         {

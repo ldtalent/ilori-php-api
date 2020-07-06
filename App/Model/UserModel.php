@@ -17,7 +17,7 @@
          * creates a new User
          *
          * @param array $payload  Contains all the fields that will be created.
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function createUser($payload)
         {
@@ -55,7 +55,7 @@
          * fetches a user by it's Id
          *
          * @param int $Id  The Id of the row to be fetched...
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function fetchUserById($Id)
         {
@@ -84,7 +84,7 @@
          * fetches a user by it's email
          *
          * @param string $email  The email of the row to be fetched...
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function checkEmail($email)
         {

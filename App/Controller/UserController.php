@@ -23,7 +23,7 @@
          * Creates a new User.
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
         */
         public function createNewUser($request, $response)
         {
@@ -149,7 +149,7 @@
          * Authenticates a New User.
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
         */
         public function login($request, $response)
         {

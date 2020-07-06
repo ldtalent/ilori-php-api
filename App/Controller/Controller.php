@@ -23,7 +23,6 @@
          */
         protected static function validation($payloads)
         {
-            $i = -1;
             $response = [];
             foreach($payloads as $payload) {
                 $i++;

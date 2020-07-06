@@ -18,7 +18,7 @@
          * Creates a New Catalog
          *
          * @param array $Payload  Contains all the required data needed to create a Catalog.
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function createCatalog($Payload)
         {
@@ -51,7 +51,7 @@
          * Updates a New Catalog
          *
          * @param array $Payload  Contains all the fields that will be updated.
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function updateCatalog($Payload)
         {
@@ -82,7 +82,7 @@
          * Returns the first Catalog that matches the ID
          *
          * @param int $Id    The Id of the Row to be updated.
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function fetchCatalogByID($Id)
         {
@@ -110,7 +110,7 @@
          * Returns the first Catalog that matches the name
          *
          * @param string $name   The name of the row to be updated.
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function fetchCatalogByName($name)
         {
@@ -138,7 +138,7 @@
          * Returns a list of catalogs.
          *
          * @param void
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function fetchCatalogs()
         {
@@ -165,7 +165,7 @@
          * Deletes a catalog
          *
          * @param int $Id       The Id of the catalog to be deleted.
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function deleteCatalog($Id)
         {

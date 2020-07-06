@@ -18,7 +18,7 @@
          * creates a new product
          *
          * @param array $payload  Contains all the fields that will be created.
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function createProduct($payload)
         {
@@ -57,7 +57,7 @@
          * fetches a product by it's ID
          *
          * @param int $Id  The Id of the row to be returned...
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function findProductById($Id)
         {
@@ -84,7 +84,7 @@
          * fetches a list of products..
          *
          * @param void
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function fetchProducts()
         {
@@ -110,7 +110,7 @@
          * update a product based on the product ID
          *
          * @param array  $Payload  An array of values to be updated...
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function updateProduct($Payload)
         {
@@ -147,7 +147,7 @@
          * deletes a product based on the product ID
          *
          * @param int $Id  An array of values to be deleted...
-         * @return array Anonymos
+         * @return array Anonymous
          */
         public static function deleteProduct($Id)
         {

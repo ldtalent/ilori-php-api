@@ -6,7 +6,6 @@
     use App\ProductModel;
     use App\JwtMiddleware;
     use App\RequestMiddleware;
-    use App\CatalogController;
 
     /**
      * ProductController - The ProductController. This Controller makes use of a few Models for creating, updating, fetching and deleting Products.
@@ -23,7 +22,7 @@
          * Creates a new Product.
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
         */
         public function createProduct($request, $response)
         {
@@ -175,7 +174,7 @@
          * Updates a Product.
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
         */
         public function updateProduct($request, $response)
         {
@@ -343,10 +342,10 @@
         /**
          * getProductById
          *
-         * Gets a Product by it'd ID
+         * Gets a Product by it's ID
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
         */
         public function getProductById($request, $response)
         {
@@ -419,7 +418,7 @@
          * Fetches an Array of products....
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
         */
         public function fetchProducts($request, $response)
         {
@@ -473,7 +472,7 @@
          * Deletes a Product by it'd ID
          *
          * @param mixed $request $response Contains the Request and Respons Object from the router.
-         * @return mixed Annonymous
+         * @return mixed Anonymous
          */
         public function deleteProduct($request, $response)
         {
