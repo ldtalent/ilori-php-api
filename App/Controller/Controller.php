@@ -25,7 +25,6 @@
         {
             $response = [];
             foreach($payloads as $payload) {
-                $i++;
                 if ($payload->validator == 'required') {
                     if ($payload->data == null || $payload->data = '' || !isset($payload->data)) {
                         array_push($response, [

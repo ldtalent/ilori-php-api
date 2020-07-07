@@ -178,11 +178,6 @@
                     'key' => 'Email'
                 ],
                 (Object) [
-                    'validator' => 'emailExists',
-                    'data' => isset($data->email) ? $data->email : '',
-                    'key' => 'Email'
-                ],
-                (Object) [
                     'validator' => 'required',
                     'data' => isset($data->password) ? $data->password : '',
                     'key' => 'Password'
@@ -212,7 +207,7 @@
                 $UserData = $UserModel::checkEmail($payload['email']);
                 if ($UserData['status']) {
 
-                    if (password_verify($payload['password'], $UserData['password'])) {
+                    if (password_verify($payload['password'], $UserData['data']['password'])) {
                         // Initialize JWT Token....
                         $tokenExp = date('Y-m-d H:i:s');  
                         $tokenSecret = Parent::JWTSecret();
@@ -245,6 +240,7 @@
                     $Response['message'] = 'Please, check your Email and Password and try again.';
                     $Response['data'] = [];
                     $response->code(401)->json($Response);
+                    return;
                 }
 
                 $Response['status'] = 500;
